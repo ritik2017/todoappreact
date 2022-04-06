@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Task from './Task';
+import CreateTask from './CreateTask';
 import './Todo.css';
 
 function Todo() {
@@ -12,9 +13,18 @@ function Todo() {
         },
         {
             title: "Run a marathon",
-            completed: false
+            completed: true
         }
     ]);
+
+    React.useEffect(() => {
+        setTaskRemaining(tasks.filter(task => !task.completed).length)
+    }, [tasks]);
+
+    const addTask = (title) => {
+        const newTasks = [...tasks, { title: title, completed: false }];
+        setTasks(newTasks);
+    }
 
     const completeTask = (index) => {
         const newTasks = [...tasks];
@@ -38,9 +48,12 @@ function Todo() {
                     <Task task={task} index={index} completeTask={completeTask} removeTask={removeTask} key={index}/>
                 ))}
             </div>
+            
+            <div className='create-task'>
+                <CreateTask addTask={addTask}/>
+            </div>
         </div>
     )
-
 }
 
 export default Todo;

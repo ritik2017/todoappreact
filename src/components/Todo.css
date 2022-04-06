@@ -14,10 +14,18 @@ body{
 }
     
 .task{
-border: 1px solid white;
-border-radius: 5px;
-padding: 0.5em;
-margin: 0.5em;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 0.5em;
+    margin: 0.5em;
+}
+
+.task-line{
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 0.5em;
+    margin: 0.5em;
+    text-decoration: line-through;
 }
 
 .task button{
